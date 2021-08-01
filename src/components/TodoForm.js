@@ -8,6 +8,7 @@ class TodoForm extends React.Component {
           value={this.props.currentEntry.task}
           onChange={this.props.onInputChange}
           placeholder="...todo"
+          onKeyDown={this.props.onAddTodo}
         />
         <button onClick={this.props.onAddTodo}>Add Todo</button>
         <button onClick={this.props.clearCompleted}>Clear Completed</button>

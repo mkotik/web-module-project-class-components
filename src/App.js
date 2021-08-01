@@ -15,10 +15,10 @@ class App extends React.Component {
     this.setState({
       currentEntry: { task: value, id: Date.now(), completed: false },
     });
-    console.log(this.state.currentEntry);
   };
 
   onAddTodo = (e) => {
+    if (e.key !== "Enter") return;
     this.setState({ Todo: [...this.state.Todo, this.state.currentEntry] });
     this.setState({ currentEntry: { task: "", id: 0, completed: false } });
   };
