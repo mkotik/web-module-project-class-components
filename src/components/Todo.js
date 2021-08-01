@@ -8,9 +8,10 @@ class Todo extends React.Component {
         id={this.props.id}
         style={{
           textDecoration: this.props.completed ? "line-through" : "none",
+          color: this.props.completed ? "green" : "black",
         }}
       >
-        {this.props.task}
+        - {this.props.task}
       </h3>
     );
   }

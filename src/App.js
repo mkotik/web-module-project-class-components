@@ -1,5 +1,7 @@
 import React from "react";
 import TodoList from "./components/TodoList";
+import "./components/Todo.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   constructor() {
@@ -18,7 +20,8 @@ class App extends React.Component {
   };
 
   onAddTodo = (e) => {
-    if (e.key !== "Enter") return;
+    console.log(e.type);
+    if (e.type === "keydown" && e.key !== "Enter") return;
     this.setState({ Todo: [...this.state.Todo, this.state.currentEntry] });
     this.setState({ currentEntry: { task: "", id: 0, completed: false } });
   };
@@ -48,8 +51,8 @@ class App extends React.Component {
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
+      <div className="appWrap">
+        <h2 className="title">Welcome to your Todo App!</h2>
         <TodoList
           Todo={this.state.Todo}
           onInputChange={this.onInputChange}
