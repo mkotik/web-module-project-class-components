@@ -19,11 +19,25 @@ class App extends React.Component {
     });
   };
 
+  search = (e) => {
+    const value = e.target.value;
+    const localState = JSON.parse(localStorage.Todo);
+    const newState = value
+      ? this.state.Todo.filter((item) => {
+          return item.task.includes(value);
+        })
+      : localState;
+    this.setState({ Todo: newState });
+  };
+
   onAddTodo = (e) => {
     console.log(e.type);
     if (e.type === "keydown" && e.key !== "Enter") return;
     this.setState({ Todo: [...this.state.Todo, this.state.currentEntry] });
     this.setState({ currentEntry: { task: "", id: 0, completed: false } });
+    console.log(this.state.Todo);
+    localStorage.setItem("Todo", JSON.stringify(this.state.Todo));
+    console.log(localStorage.Todo);
   };
 
   onClearCompleted = (e) => {
@@ -60,6 +74,7 @@ class App extends React.Component {
           clickItem={this.clickItem}
           currentEntry={this.state.currentEntry}
           onClearCompleted={this.onClearCompleted}
+          search={this.search}
         />
       </div>
     );

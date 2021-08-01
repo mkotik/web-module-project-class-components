@@ -9,6 +9,11 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
+        <input
+          className="input"
+          placeholder="..search"
+          onChange={this.props.search}
+        />
         {this.props.Todo.map((item, i) => (
           <Todo
             task={item.task}

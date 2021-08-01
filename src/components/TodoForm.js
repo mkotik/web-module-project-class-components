@@ -10,6 +10,7 @@ class TodoForm extends React.Component {
           placeholder="...todo"
           onKeyDown={this.props.onAddTodo}
           className="input"
+          search={this.props.search}
         />
         <button className="btn btn-success" onClick={this.props.onAddTodo}>
           Add Todo
